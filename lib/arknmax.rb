@@ -1,5 +1,5 @@
-require "arknmax/version"
+# frozen_string_literal: true
 
-module Arknmax
-  # Your code goes here...
-end
+require 'arknmax/version'
+require 'arknmax/heap'
+require 'arknmax/reader'

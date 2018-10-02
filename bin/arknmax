@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+
+$:.unshift(File.expand_path(__dir__ + '/../lib'))
+
+require 'arknmax'
+
+begin
+  size_limit = ARGV[0].to_i
+
+  if size_limit > 0
+    Arknmax::Reader.new(size_limit).perform.print_from_max
+    exit 0
+  else
+    STDERR.puts 'Type positive integer as first argument.'
+    exit 1
+  end
+
+rescue => e
+  STDERR.puts e.message
+  STDERR.puts e.backtrace.join('\n')
+  exit 1
+end

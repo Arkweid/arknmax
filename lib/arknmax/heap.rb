@@ -14,6 +14,8 @@ module Arknmax
     end
 
     def <<(num)
+      return if limit_reached? && new_value_too_low?(num)
+
       data_structure.push(num)
 
       cut_extra_size! if overlimit?
@@ -39,8 +41,16 @@ module Arknmax
       data_structure.length > size_limit
     end
 
+    def limit_reached?
+      data_structure.length >= size_limit
+    end
+
     def cut_extra_size!
       data_structure.pop
+    end
+
+    def new_value_too_low?(num)
+      data_structure.min >= num
     end
   end
 end
